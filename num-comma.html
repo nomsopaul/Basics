@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Comma To Number</title>
+        <script>
+            // the number
+            var num = 1234567.89;
+
+            //convert to string & replace
+            num = num.toString()
+            
+            // split whole & decimal numbers
+            var cWhole = "", cDec = "",
+            cDot = num.indexOf(".");
+            if (cDot != -1) {
+                cWhole = num.substring(0, cDot);
+                cDec = num.substring(cDot);
+            }
+            console.log(cWhole);
+            console.log(cDec);
+
+            //manually add commas per thousand
+            if (cWhole.length > 3) {
+                var temp = "", j = 0;
+                for (var i=cWhole.length-1; i>=0; i--) {
+                    temp = cWhole[i] + temp;
+                    j++;
+                    if (j%3==0 && i!=0) { temp = "," + temp; }
+                }
+                cWhole = temp;
+            }
+
+            // combine whole & decimal numbers back
+            num = cWhole + cDec;
+            console.log(num);
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
